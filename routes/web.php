@@ -9,12 +9,12 @@ use Livewire\Volt\Volt;
 
 
 // Route::livewire('/', 'pages.login')->redirect->route();
-Route::redirect('/', '/user/');
-Volt::route('/user/', 'pages.login');
-Volt::route('/user/dashboard', 'pages.dashboard_hms');
+// Route::redirect('/', '/user/');
+// Volt::route('/user/', 'pages.login');
+Volt::route('/', 'pages.dashboard_hms');
 // Route::livewire('/user/dashboard', 'pages.dashboard_hms');
 // Route::livewire('/user/home', 'pages.dashboard_hms');
-// Route::livewire('/user/items', 'pages.list_items_hms');
+Route::livewire('/user/items', 'pages.list_items_hms');
 
 
 // Route::prefix('user')->group(function(){

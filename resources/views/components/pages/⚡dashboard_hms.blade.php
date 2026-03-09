@@ -4,7 +4,7 @@ use Livewire\Component;
 
 new class extends Component
 {
-
+    
 };
 ?>
 
@@ -18,7 +18,7 @@ new class extends Component
         <br>
 
         <div>
-            Selamat Datang Pak Anonim di HMS (Helpdesk Management System)
+            Selamat Datang Pak  di HMS (Helpdesk Management System)
             <p>Sistem layanan permintaan & Ticketing</p>
         </div>
 

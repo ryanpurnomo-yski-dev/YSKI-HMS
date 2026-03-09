@@ -1,3 +1,6 @@
+@php
+$user = Auth::user();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -17,9 +20,13 @@
     <body>
         
         <div style="display: flex; min-height: 70vh;">
-            @include('sidebar.sidebar1')
+            @if(!Route::is('login'))
+                @include('sidebar.sidebar2', ['user' => $user])
+            @endif
             <div style="flex: 1; display: flex; flex-direction: column;">
-                @include('navbar.navbar1')
+                @if(!Route::is('login'))
+                    @include('navbar.navbar2', ['user' => $user])
+                @endif
                 <main style="padding: 20px;">
                     {{ $slot }}
                 </main>

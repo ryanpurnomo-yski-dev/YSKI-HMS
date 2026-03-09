@@ -8,6 +8,7 @@ use Livewire\Volt\Volt;
 // });
 
 Route::livewire('/', 'pages.dashboard_hms');
+Route::livewire('/barang/kategori', 'pages.Data.kategori_hms');
 Route::livewire('/user/home', 'pages.dashboard_hms');
 Route::livewire('/user/items', 'pages.list_items_hms');
 

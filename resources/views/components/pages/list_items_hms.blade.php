@@ -143,6 +143,106 @@ new class extends Component
                                 <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="code">Data Kode11</td>
+                            <td>Data Kategori1</td>
+                            <td>Data Nama3</td>
+                            <td>Data Merk1</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode12</td>
+                            <td>Data Kategori2</td>
+                            <td>Data Nama2</td>
+                            <td>Data Merk3</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode13</td>
+                            <td>Data Kategori3</td>
+                            <td>Data Nama1</td>
+                            <td>Data Merk1</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode14</td>
+                            <td>Data Kategori1</td>
+                            <td>Data Nama3</td>
+                            <td>Data Merk2</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode15</td>
+                            <td>Data Kategori2</td>
+                            <td>Data Nama2</td>
+                            <td>Data Merk2</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode16</td>
+                            <td>Data Kategori3</td>
+                            <td>Data Nama1</td>
+                            <td>Data Merk3</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode17</td>
+                            <td>Data Kategori1</td>
+                            <td>Data Nama1</td>
+                            <td>Data Merk3</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode18</td>
+                            <td>Data Kategori2</td>
+                            <td>Data Nama2</td>
+                            <td>Data Merk1</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode19</td>
+                            <td>Data Kategori3</td>
+                            <td>Data Nama3</td>
+                            <td>Data Merk2</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="code">Data Kode20</td>
+                            <td>Data Kategori1</td>
+                            <td>Data Nama2</td>
+                            <td>Data Merk1</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <script>
@@ -169,14 +269,14 @@ new class extends Component
         </div>
 
         <div class="card-footer bg-white d-flex flex-wrap justify-content-between align-items-center gap-2">
-            <p class="small text-secondary mb-0">Showing 1 to 10 of 31 entries</p>
-            <div class="btn-group btn-group-sm" role="group">
-                <button class="btn btn-outline-secondary">&lsaquo;</button>
-                <button class="btn btn-secondary">1</button>
-                <button class="btn btn-outline-secondary">2</button>
-                <button class="btn btn-outline-secondary">3</button>
-                <button class="btn btn-outline-secondary">4</button>
-                <button class="btn btn-outline-secondary">&rsaquo;</button>
+            <p id="entriesInfo" class="small text-secondary mb-0">Showing 1 to 10 of 31 entries</p>
+            <div class="btn-group btn-group-sm" id="paginationBtns" role="group">
+                <button class="btn btn-outline-secondary" data-nav="prev">&lsaquo;</button>
+                <button class="btn btn-secondary" data-page="1">1</button>
+                <button class="btn btn-outline-secondary" data-page="2">2</button>
+                <button class="btn btn-outline-secondary" data-page="3">3</button>
+                <button class="btn btn-outline-secondary" data-page="4">4</button>
+                <button class="btn btn-outline-secondary" data-nav="next">&rsaquo;</button>
             </div>
         </div>
     </div>
@@ -223,5 +323,63 @@ new class extends Component
     }
 
 </style>
+
+<script>
+(() => {
+    const perPage = 10; // sementara fix 10
+    let currentPage = 1;
+
+    const table = document.getElementById("itemsTable");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    const info = document.getElementById("entriesInfo");
+    const btnWrap = document.getElementById("paginationBtns");
+
+    function render() {
+        const total = rows.length;
+        const totalPages = Math.max(1, Math.ceil(total / perPage));
+        currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+
+        rows.forEach((row, i) => {
+            row.style.display = (i >= start && i < end) ? "" : "none";
+        });
+
+        const from = total ? start + 1 : 0;
+        const to = Math.min(end, total);
+        info.textContent = `Showing ${from} to ${to} of ${total} entries`;
+
+        btnWrap.querySelectorAll("[data-page]").forEach(btn => {
+            const p = Number(btn.dataset.page);
+            btn.classList.toggle("btn-secondary", p === currentPage);
+            btn.classList.toggle("btn-outline-secondary", p !== currentPage);
+        });
+    }
+
+    btnWrap.addEventListener("click", (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+
+        if (btn.dataset.page) {
+            currentPage = Number(btn.dataset.page);
+            render();
+        }
+
+        if (btn.dataset.nav === "prev") {
+            currentPage--;
+            render();
+        }
+
+        if (btn.dataset.nav === "next") {
+            currentPage++;
+            render();
+        }
+    });
+
+    render();
+})();
+</script>
+
 
 

@@ -246,24 +246,40 @@ new class extends Component
                     </tbody>
                 </table>
                 <script>
-                    function filterItemsTable() {
-                        const input = document.getElementById("tableSearch");
-                        const table = document.getElementById("itemsTable");
-                        if (!input || !table) return;
-
-                        const keyword = input.value.trim();
-                        const rows = table.querySelectorAll("tbody tr");
-
-                        rows.forEach((row) => {
+                function filterItemsTable() {
+                    const input = document.getElementById("tableSearch");
+                    const table = document.getElementById("itemsTable");
+                    if (!input || !table) return;
+                
+                    const keyword = input.value.trim().toLowerCase();
+                    const rows = table.querySelectorAll("tbody tr");
+                
+                    rows.forEach((row) => {
+                        const firstCell = row.querySelector("td");
+                        if (!firstCell) return;
+                
+                        const kode = firstCell.textContent.trim().toLowerCase();
+                
+                        if (keyword === "") {
+                            // kalau kosong, hanya tampil Data Kode1 - Data Kode10
+                            const match = /^data kode([1-9]|10)$/.test(kode);
+                            row.style.display = match ? "" : "none";
+                            return;
+                        }
+                
+                        // kalau ada keyword, cari di 4 kolom pertama
                         const cells = row.querySelectorAll("td");
                         const searchableText = Array.from(cells)
                             .slice(0, 4)
-                            .map((cell) => cell.textContent)
+                            .map((cell) => cell.textContent.toLowerCase())
                             .join(" ");
-
+                
                         row.style.display = searchableText.includes(keyword) ? "" : "none";
                     });
                 }
+                
+                
+                document.addEventListener("DOMContentLoaded", filterItemsTable);
                 </script>
             </div>
         </div>

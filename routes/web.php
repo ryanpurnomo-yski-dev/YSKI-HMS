@@ -7,9 +7,14 @@ use Livewire\Volt\Volt;
 //     Volt::route('/home', 'pages.home')->name('pages.user.home');
 // });
 
-Route::livewire('/', 'pages.dashboard_hms');
-Route::livewire('/user/home', 'pages.dashboard_hms');
-Route::livewire('/user/items', 'pages.list_items_hms');
+
+// Route::livewire('/', 'pages.login')->redirect->route();
+Route::redirect('/', '/user/');
+Volt::route('/user/', 'pages.login');
+Volt::route('/user/dashboard', 'pages.dashboard_hms');
+// Route::livewire('/user/dashboard', 'pages.dashboard_hms');
+// Route::livewire('/user/home', 'pages.dashboard_hms');
+// Route::livewire('/user/items', 'pages.list_items_hms');
 
 
 // Route::prefix('user')->group(function(){

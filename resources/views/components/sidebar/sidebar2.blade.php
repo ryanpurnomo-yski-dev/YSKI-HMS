@@ -26,19 +26,33 @@
                 'My Tickets' => [
                     'url' => '/user/tickets',
                     'icon' => 'fas fa-ticket-alt'
+                ],
+                'Kategori' => [
+                    'url' => '/user/category',
+                    'icon' => 'fas fa-tags'
                 ]
             ];
         @endphp
-        @foreach(explode(',', $user->role->pages) as $page)
-        @if(isset($menu[$page]))
-        <li>
-            <a href="{{ $menu[$page]['url'] }}" class="nav-link text-white-50 custom-hover d-flex align-items-center gap-3 px-4 py-3 border-0">
-                <i class="{{ $menu[$page]['icon'] }}" style="width: 20px;"></i>
-                <span>{{ $page }}</span>
-            </a>
-        </li>
+        @if(!empty($user->role?->pages))
+            @foreach(explode(',', $user->role->pages) as $page)
+                @if(isset($menu[$page]))
+                    <li>
+                        <a href="{{ $menu[$page]['url'] }}" 
+                        class="nav-link text-white-50 custom-hover d-flex align-items-center gap-3 px-4 py-3 border-0">
+                            <i class="{{ $menu[$page]['icon'] }}" style="width: 20px;"></i>
+                            <span>{{ $page }}</span>
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+        @else
+            <li>
+                <a href="#" class="nav-link text-white-50 custom-hover d-flex align-items-center gap-3 px-4 py-3 border-0">
+                    <i class="bi bi-x-circle" style="width: 20px;"></i>
+                    <span>Tidak ada Menu</span>
+                </a>
+            </li>
         @endif
-        @endforeach
     </ul>
 </aside>
 

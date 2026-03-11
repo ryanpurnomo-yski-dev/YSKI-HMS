@@ -21,7 +21,7 @@ Volt::route('/user/requests', 'pages.requests_hms')->name('requests');
 Volt::route('/user/items', 'pages.items_hms')->name('items');
 Route::livewire('/user/items', 'pages.list_items_hms');
 Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
-Volt::route('/user/tickets', 'pages.tickets_hms')->name('tickets');
+Volt::route('/user/tickets', 'pages.ticket_hms')->name('tickets');
 
 // Route::prefix('user')->group(function(){
 //     Volt::route('/home', 'home')->name('pages.user.home');

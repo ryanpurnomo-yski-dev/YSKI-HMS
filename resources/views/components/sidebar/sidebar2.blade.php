@@ -45,13 +45,6 @@
                     </li>
                 @endif
             @endforeach
-        @else
-            <li>
-                <a href="#" class="nav-link text-white-50 custom-hover d-flex align-items-center gap-3 px-4 py-3 border-0">
-                    <i class="bi bi-x-circle" style="width: 20px;"></i>
-                    <span>Tidak ada Menu</span>
-                </a>
-            </li>
         @endif
     </ul>
 </aside>

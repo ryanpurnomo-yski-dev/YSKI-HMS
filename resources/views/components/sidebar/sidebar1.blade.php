@@ -6,7 +6,7 @@
 
     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px;">
         
-        <li class="sidebar-item" style="padding: 12px 20px; color: #cbd5e0; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 15px;">
+        <li class="sidebar-item" style="padding: 12px 20px; color: #cbd5e0; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 15px;" onclick="window.location.href='/';">
             <i class="fas fa-th-large" style="width: 20px;"></i>
             <span>Dashboard</span>
         </li>

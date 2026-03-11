@@ -14,7 +14,8 @@ use Livewire\Volt\Volt;
 Volt::route('/', 'pages.dashboard_hms');
 // Route::livewire('/user/dashboard', 'pages.dashboard_hms');
 // Route::livewire('/user/home', 'pages.dashboard_hms');
-Route::livewire('/user/items', 'pages.list_items_hms');
+Volt::route('/user/items', 'pages.list_items_hms');
+Route::livewire('/user/items/tambah', 'pages.tambah-barang');
 
 
 // Route::prefix('user')->group(function(){

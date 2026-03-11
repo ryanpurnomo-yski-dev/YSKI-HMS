@@ -46,4 +46,10 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('/');
     }
+
+    public function profile(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        dd($user);
+    }
 }

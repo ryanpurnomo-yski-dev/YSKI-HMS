@@ -23,13 +23,15 @@ new class extends Component
         </div>
 
         <div style="display: flex; flex-direction: row; gap: 20px;">
-            <div style="background-color:rgb(124, 168, 168); color: white; padding: 10px 20px;">
+            <div class="text-white border rounded-3" style="background-color:rgb(124, 168, 168); padding: 10px 20px;">
                 <h1>Permintaan Barang</h1> 
                 <p>Ajukan permintaan barang yang anda butuhkan untuk keperluan kerja</p>
+                <button class="btn btn-md bg-primary text-white">Buat Permintaan</button>
             </div>
-            <div style="background-color:rgb(124, 168, 168); color:white; padding: 10px 20px;">
-                <h1>Permintaan Barang</h1> 
-                <p>Ajukan permintaan barang yang anda butuhkan untuk keperluan kerja</p>
+            <div class="text-white border rounded-3" style="background-color:rgb(124, 168, 168); padding: 10px 20px;">
+                <h1>Keluhan</h1> 
+                <p>Laporkan masalah atau keluhan yang anda alami</p>
+                <button class="btn btn-md bg-warning text-white">Buat Permintaan</button>
             </div>
         </div>
 

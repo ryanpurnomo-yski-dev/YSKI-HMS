@@ -12,7 +12,11 @@ use App\Http\Controllers\Auth\AuthController;
 Route::redirect('/', '/user/')->name('/');
 Volt::route('/user/', 'pages.login')->name('login');
 Route::post('/user/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/user/logout', [AuthController::class, 'logout'])->name('login.post');
+Route::post('/user/logout', [AuthController::class, 'logout'])->name('logout.post');
+
+Volt::route('/user/setting/profile', 'pages.profile_hms')->name('profile');
+Route::post('/user/setting/profile', [AuthController::class, 'profile'])->name('profile.post');
+
 Volt::route('/user/dashboard', 'pages.dashboard_hms')->name('dashboard');
 Volt::route('/user/requests', 'pages.requests_hms')->name('requests');
 Volt::route('/user/items', 'pages.items_hms')->name('items');

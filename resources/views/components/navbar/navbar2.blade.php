@@ -2,7 +2,7 @@
     <div class="container-fluid px-4">
         <div class="d-flex ms-auto align-items-center gap-4">
             
-            <a href="#" class="text-white text-decoration-none custom-icon-hover">
+            <a href="/user/setting/profile" class="text-white text-decoration-none custom-icon-hover">
                 <i class="fas fa-user fa-lg"></i>
             </a>
 

@@ -90,7 +90,7 @@ new class extends Component
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->merk_barang }}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-outline-warning me-1">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/user/items/{{ $item->id }}/edit';">Edit</button>
                                     <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
                                 </td>
                             </tr>

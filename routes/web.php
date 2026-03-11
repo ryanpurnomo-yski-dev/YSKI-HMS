@@ -14,6 +14,7 @@ Volt::route('/user/', 'pages.login')->name('login');
 Route::post('/user/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/user/logout', [AuthController::class, 'logout'])->name('login.post');
 Volt::route('/user/dashboard', 'pages.dashboard_hms')->name('dashboard');
+Route::livewire('/barang/kategori', 'pages.Data.kategori_hms');
 Volt::route('/user/requests', 'pages.dashboard_hms')->name('dashboard');
 Volt::route('/user/items', 'pages.dashboard_hms')->name('dashboard');
 Volt::route('/user/tickets', 'pages.dashboard_hms')->name('dashboard');

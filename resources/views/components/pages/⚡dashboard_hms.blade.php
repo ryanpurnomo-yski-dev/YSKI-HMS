@@ -23,11 +23,11 @@ new class extends Component
         </div>
 
         <div style="display: flex; flex-direction: row; gap: 20px;">
-            <div style="background-color:aqua; color: white; padding: 10px 20px;">
+            <div style="background-color:rgb(124, 168, 168); color: white; padding: 10px 20px;">
                 <h1>Permintaan Barang</h1> 
                 <p>Ajukan permintaan barang yang anda butuhkan untuk keperluan kerja</p>
             </div>
-            <div style="background-color:aqua; color:white; padding: 10px 20px;">
+            <div style="background-color:rgb(124, 168, 168); color:white; padding: 10px 20px;">
                 <h1>Permintaan Barang</h1> 
                 <p>Ajukan permintaan barang yang anda butuhkan untuk keperluan kerja</p>
             </div>

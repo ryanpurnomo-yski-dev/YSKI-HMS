@@ -43,6 +43,13 @@ new class extends Component
                 ->paginate($this->perPage),
         ])->layout('layouts.app');
     }
+
+    public function delete(int $id): void
+    {
+        Barang::wherekey($id)->delete();
+        $this->resetPage();
+        session()->flash('success', 'Barang berhasil dihapus.');
+    }
 };
 ?>
 
@@ -81,6 +88,12 @@ new class extends Component
             </div>
 
             <div class="table-responsive">
+                @if (session('success'))
+                    <div class="alert alert-success d-flex align-items-center justify-content-between py-2" role="alert">
+                        <span>{{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <table id="itemsTable" class="table table-sm align-middle mb-0 items-table">
                     <thead class="table-light">
                         <tr>
@@ -100,7 +113,7 @@ new class extends Component
                                 <td>{{ $item->merk_barang }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/user/items/{{ $item->id }}/edit';">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" x-on:click.prevent="if(confirm('Yakin ingin menghapus?')) $wire.delete({{ $item->id }})">Hapus</button>
                                 </td>
                             </tr>
                         @empty

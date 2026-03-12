@@ -50,11 +50,11 @@ new class extends Component
 
         <div class="card-body p-3">
             @if (session('success'))
-                <div class="alert alert-success py-2">
-                    {{ session('success') }}
-                </div>
+                    <div class="alert alert-success d-flex align-items-center justify-content-between py-2" role="alert">
+                        <span>{{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
             @endif
-
             <form wire:submit.prevent="save" class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label">Kode Barang</label>

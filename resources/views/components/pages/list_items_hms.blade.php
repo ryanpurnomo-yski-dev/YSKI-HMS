@@ -125,7 +125,6 @@ new class extends Component
                 </table>
             </div>
         </div>
-
         <div class="card-footer bg-white d-flex justify-content-end">
             {{ $items->links() }}
         </div>

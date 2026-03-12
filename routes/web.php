@@ -22,7 +22,7 @@ Volt::route('/user/items', 'pages.items_hms')->name('items');
 Volt::route('/user/items', 'pages.list_items_hms');
 Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
 Volt::route('/user/tickets', 'pages.tickets_hms')->name('tickets');
-Route::livewire('/user/items/tambah', 'pages.tambah-barang');
+Route::livewire('/user/items/tambah', 'pages.tambah_barang');
 Route::livewire('/user/items/{id}/edit', 'pages.edit_barang');
 
 

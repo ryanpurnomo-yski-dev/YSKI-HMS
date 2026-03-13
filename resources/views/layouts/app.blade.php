@@ -34,7 +34,6 @@ $user = Auth::user();
                 </main>
             </div>
         </div>
-
         @livewireScripts
     </body>
 </html>

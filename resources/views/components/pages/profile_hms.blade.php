@@ -9,7 +9,7 @@ new class extends Component
 ?>
 
 <div>
-    <h2>Profile</h2>
+    <h1>Profile</h1>
     <div class="d-flex flex-row gap-4">
         <div class="card text-center d-flex flex-column align-items-center" style="width: 18rem;">
             <div class="bg-primary border rounded-circle mt-2 mx-auto" style="width: 150px; height: 150px;"></div>

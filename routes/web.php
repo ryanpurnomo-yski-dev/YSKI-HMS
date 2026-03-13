@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Kategori_barang;
 
 // Route::get('/', function () {
 //     Volt::route('/home', 'pages.home')->name('pages.user.home');
@@ -24,8 +25,7 @@ Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
 Volt::route('/user/tickets', 'pages.tickets_hms')->name('tickets');
 Route::livewire('/user/items/tambah', 'pages.tambah_barang');
 Route::livewire('/user/items/{id}/edit', 'pages.edit_barang');
-
-
+Route::livewire('/barang/kategori', 'pages.Data.kategori_hms')->name('kategori');
 
 // Route::prefix('user')->group(function(){
 //     Volt::route('/home', 'home')->name('pages.user.home');

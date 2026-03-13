@@ -9,19 +9,21 @@ use App\Http\Controllers\Kategori_barang;
 //     Volt::route('/home', 'pages.home')->name('pages.user.home');
 // });
 
-
 Route::redirect('/', '/user/')->name('/');
 Volt::route('/user/', 'pages.login')->name('login');
 Route::post('/user/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/user/logout', [AuthController::class, 'logout'])->name('login.post');
+Route::post('/user/logout', [AuthController::class, 'logout'])->name('logout.post');
+
+Volt::route('/user/setting/profile', 'pages.profile_hms')->name('profile');
+Route::post('/user/setting/profile', [AuthController::class, 'profile'])->name('profile.post');
+
 Volt::route('/user/dashboard', 'pages.dashboard_hms')->name('dashboard');
-Route::prefix('/barang') -> group(function(){
-    Route::livewire('/kategori', 'pages.Data.kategori_hms')->name('kategori');
-    Route::post('/kategori/ubah', [Kategori_barang::class,'ubah'])->name('ubah');
-});
-Volt::route('/user/requests', 'pages.dashboard_hms')->name('dashboard');
-Volt::route('/user/items', 'pages.dashboard_hms')->name('dashboard');
-Volt::route('/user/tickets', 'pages.dashboard_hms')->name('dashboard');
+Volt::route('/user/requests', 'pages.requests_hms')->name('requests');
+Volt::route('/user/items', 'pages.items_hms')->name('items');
+Route::livewire('/user/items', 'pages.list_items_hms');
+Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
+Volt::route('/user/tickets', 'pages.ticket_hms')->name('tickets');
+Route::livewire('/barang/kategori', 'pages.Data.kategori_hms')->name('kategori');
 
 // Route::prefix('user')->group(function(){
 //     Volt::route('/home', 'home')->name('pages.user.home');

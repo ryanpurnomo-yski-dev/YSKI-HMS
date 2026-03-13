@@ -20,9 +20,11 @@ Route::post('/user/setting/profile', [AuthController::class, 'profile'])->name('
 Volt::route('/user/dashboard', 'pages.dashboard_hms')->name('dashboard');
 Volt::route('/user/requests', 'pages.requests_hms')->name('requests');
 Volt::route('/user/items', 'pages.items_hms')->name('items');
-Route::livewire('/user/items', 'pages.list_items_hms');
+Volt::route('/user/items', 'pages.list_items_hms');
 Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
-Volt::route('/user/tickets', 'pages.ticket_hms')->name('tickets');
+Volt::route('/user/tickets', 'pages.tickets_hms')->name('tickets');
+Route::livewire('/user/items/tambah', 'pages.tambah_barang');
+Route::livewire('/user/items/{id}/edit', 'pages.edit_barang');
 Route::livewire('/barang/kategori', 'pages.Data.kategori_hms')->name('kategori');
 
 // Route::prefix('user')->group(function(){

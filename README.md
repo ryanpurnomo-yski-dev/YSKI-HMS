@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -20,6 +20,50 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Docker (local development)
+
+This repo includes a simple `Dockerfile` + `docker-compose.yml` setup.
+
+1) Start containers:
+
+```bash
+docker compose up -d --build
+```
+
+2) Create `.env` and update DB host (or set to match compose):
+
+- `DB_HOST=db`
+- `DB_PASSWORD=password`
+
+3) Install deps + app key + migrate:
+
+```bash
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate
+```
+
+4) Run Vite (optional, for hot reload):
+
+```bash
+docker compose up -d vite
+```
+
+App: `http://localhost:8000`
+## Render (production)
+
+This repo can run on Render as a single Docker Web Service (the image runs **nginx + php-fpm** and listens on `$PORT`).
+
+- Deploy as a Render **Web Service** (Environment: Docker), or use the Blueprint in `render.yaml`.
+- Set env vars: `APP_KEY`, `APP_URL`, and your DB/Redis values (or `DATABASE_URL` if using Postgres).
+- Run migrations on deploy (Render dashboard **Pre-Deploy Command**, or keep `preDeployCommand` in `render.yaml`):
+
+```bash
+php artisan migrate --force
+```
+
+- If you upload files to `storage/`, attach a persistent disk and mount it at `/var/www/storage` (or use S3).
 
 ## Learning Laravel
 
@@ -57,3 +101,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+

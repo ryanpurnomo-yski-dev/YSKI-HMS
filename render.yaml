@@ -1,0 +1,37 @@
+﻿services:
+  - type: web
+    name: yski-hms
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    preDeployCommand: php artisan migrate --force
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: DB_CONNECTION
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: REDIS_HOST
+        sync: false
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: REDIS_PORT
+        sync: false

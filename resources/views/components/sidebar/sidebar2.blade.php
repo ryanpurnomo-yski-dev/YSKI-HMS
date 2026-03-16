@@ -13,37 +13,20 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        @php
-            $menu = [
-                'Data Barang' => [
-                    'url' => '/user/items',
-                    'icon' => 'fas fa-box'
-                ],
-                'Riwayat Permintaan' => [
-                    'url' => '/user/requests',
-                    'icon' => 'fas fa-history'
-                ],
-                'My Tickets' => [
-                    'url' => '/user/tickets',
-                    'icon' => 'fas fa-ticket-alt'
-                ],
-                'Kategori' => [
-                    'url' => '/user/category',
-                    'icon' => 'fas fa-tags'
-                ]
-            ];
-        @endphp
         @if(!empty($user->role?->pages))
-            @foreach(explode(',', $user->role->pages) as $page)
-                @if(isset($menu[$page]))
+            @php
+                $pages = explode(',', $user->role->pages);
+                $urls = explode(',', $user->role->urls);
+                $icons = explode(',', $user->role->icons);
+            @endphp
+            @foreach($pages as $key => $page)
                     <li>
-                        <a href="{{ $menu[$page]['url'] }}" 
+                        <a href="{{ $urls[$key] }}" 
                         class="nav-link text-white-50 custom-hover d-flex align-items-center gap-3 px-4 py-3 border-0">
-                            <i class="{{ $menu[$page]['icon'] }}" style="width: 20px;"></i>
+                            <i class="{{ $icons[$key] ?? '' }}" style="width: 20px;"></i>
                             <span>{{ $page }}</span>
                         </a>
                     </li>
-                @endif
             @endforeach
         @endif
     </ul>

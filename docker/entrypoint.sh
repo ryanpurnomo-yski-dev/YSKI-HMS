@@ -10,6 +10,7 @@ if [ -f /var/www/artisan ]; then
   /var/www/storage /var/www/bootstrap/cache
   
   chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache || true
+  chmod -R 775 /var/www/storage /var/www/bootstrap/cache || true
 fi
 
 if [ -f /etc/nginx/http.d/default.conf.template ]; then

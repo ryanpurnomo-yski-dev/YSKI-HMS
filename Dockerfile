@@ -67,8 +67,17 @@ COPY . /var/www
 COPY --from=vendor /app/vendor /var/www/vendor
 COPY --from=assets /app/public/build /var/www/public/build
 
-RUN mkdir -p /var/www/storage /var/www/bootstrap/cache \
-  && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# RUN mkdir -p /var/www/storage /var/www/bootstrap/cache \
+#   && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+RUN mkdir -p \
+    /var/www/storage/framework/cache \
+    /var/www/storage/framework/sessions \
+    /var/www/storage/framework/views \
+    /var/www/storage/logs \
+    /var/www/bootstrap/cache \
+  && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+  && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 ENV PORT=10000
 EXPOSE 10000

@@ -10,7 +10,7 @@ new class extends Component
 
     public function render()
     {
-        return view('components.pages.Data.kategori_hms', [
+        return view('components.pages.kategori_hms', [
             'Kategori' => kategori::all() 
         ]);
     }
@@ -77,10 +77,7 @@ new class extends Component
     }
 };
 ?>
-
-<div>
-
-    <style>
+<style>
         table{
             border-collapse:collapse;
             width:100%
@@ -106,24 +103,29 @@ new class extends Component
         thead{
         border-bottom: 3px solid #ddd;
         }
-    </style>
+</style>
 
-    <h1>Kategori</h1>
-    <div style="display:flex"><p>Home / Barang /&nbsp;</p><p style="color:#009dff">Kategori</p></div>
-    <div class="pt-4 pb-4" style="padding-left:1.5vw;padding-right:1.5vw;background-color:#fafafa;border-radius:30px;box-shadow:1px 2px 1px 2px  rgba(0, 0, 0, 0.2)">
-        <div style="display: block; margin-bottom:3vh"><h4 style="color:#009dff">Master Data Kategori</h4></div>
-        <button type="button" class="btn btn-primary" wire:click="create" style="margin-bottom:5vh" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Kategori</button>
+<div class="container-fluid px-0">
+    <div class="mb-3">
+        <h2 class="mb-1">Kategori</h2>
+    </div>
 
-        <div style="margin-right:auto;display:flex;width:100%;align-items:center;margin-bottom:1em">
-            <select class="form-select" style="display:flex;width:max-content; height:100%" default="5" onchange="Entries()" id="entries">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="100">100</option>
-            </select>
-            <div style="margin-right:auto;align-items:center">
-                &nbsp; entries per page
+    <div class="card table-card border-1 shadow-sm">
+        <div class="card-header bg-light border-bottom">
+            <h6 class="h6 mb-1 fw-semibold">Master Data Kategori</h6>
+        </div> 
+    
+    <div class="card-body p-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <div class="d-flex align-items-center gap-2 small text-secondary">
+                <select class="form-select form-select-sm w-auto entry-select" wire:model="perPage">
+                    <option value="10">10</option>
+                    <option value="5">5</option>
+                </select>
+                <span>entries per page</span>
+                <button type="button" style="margin-left: 30px;" class="btn btn-primary me-1" wire:click="create"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Kategori</button>
             </div>
+
             <div class="input-group flex-nowrap" style="width:20em">
                 <span class="input-group-text" id="addon-wrapping"><i class="fa fa-search" aria-hidden="true"></i></span>
                 <input type="text" class="form-control" id="Category_lookup" onkeyup="Entries()" placeholder="Search for names.." aria-label="Username" aria-describedby="addon-wrapping">
@@ -197,6 +199,7 @@ new class extends Component
             </div>
         </div>
     </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>

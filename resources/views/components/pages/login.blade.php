@@ -8,10 +8,14 @@ new class extends Component
     
 };
 ?>
-
+<style>
+    .container-center{
+        height: 90vh;
+    }
+</style>
 <div class="bg-main-page">
-    <div class="container-fluid d-flex mx-auto">
-            <div class="col-md-6 mx-auto bg-secondary-subtle border border-light rounded">
+    <div class="container-center container-fluid d-flex align-items-center justify-content-center">
+            <div class="col-md-6 mx-auto align-middle bg-secondary-subtle border border-light rounded">
                 <div class="text-center mb-4 mt-4">
                     <img src="{{ asset('/images/logo_yski.png') }}" class="mx-auto">
                 </div>

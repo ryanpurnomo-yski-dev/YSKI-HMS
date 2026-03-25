@@ -8,16 +8,21 @@ new class extends Component
 };
 ?>
 
-<div>
-    <h1>Form Keluhan</h1>
-    <div style="display:flex"><p>Home / Barang /&nbsp;</p><p style="color:#009dff">Kategori</p></div>
+<div class="container-fluid px-0">
+    <h2>Form Keluhan</h2>
+    <!-- <div style="display:flex"><p>Home / Barang /&nbsp;</p><p style="color:#009dff">Kategori</p></div> -->
     
-    <div class="card p-3">
-        <h2>Isi Data Formulir Keluhan</h2>
-        <form>
+    <div class="card table-card border-1 shadow-sm">
+        <div class="card-header bg-light border-bottom">
+            <h6>Formulir Keluhan</h6>
+        </div>
+        <form class="card-body p-3">
             <label>Kategori</label>
             <select class="form-control">
                 <option>-- Pilih Kategori --</option>
+                <option>Hardware</option>
+                <option>Software</option>
+                <option>Pengadaan Aset</option>
             </select>
             
             <label class="mt-2">Tanggal</label>

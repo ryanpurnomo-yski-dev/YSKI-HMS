@@ -55,13 +55,13 @@ new class extends Component
 
 <div class="container-fluid px-0">
     <div class="mb-3">
-        <h2 class="h4 mb-1">Barang</h2>
-        <p class="text-secondary small mb-1">Master / Barang</p>
+        <h2 class="mb-1">Barang</h2>
+        <!-- <p class="text-secondary small mb-1">Master / Barang</p> -->
     </div>
 
     <div class="card table-card border-1 shadow-sm">
         <div class="card-header bg-light border-bottom">
-            <h3 class="h6 mb-1 fw-semibold">Master Data Barang</h3>
+            <h6 class="h6 mb-1 fw-semibold">Master Data Barang</h6>
         </div>
 
         <div class="card-body p-3">

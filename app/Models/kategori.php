@@ -13,7 +13,7 @@ class kategori extends Model
      * @var list<string>
      */
 
-    protected $table = 'kategori_barang';
+    protected $table = 'categories';
     public $timestamps = false;
     protected $fillable = [
         'kategori',

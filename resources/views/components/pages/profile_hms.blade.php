@@ -4,22 +4,30 @@ use Livewire\Component;
 
 new class extends Component
 {
-    
+    public $user;
+
+    public function mount()
+    {
+        $this->user = auth()->user();
+    }
 };
 ?>
 
 <div>
-    <h1>Profile</h1>
+    <h3>Profile</h3>
     <div class="d-flex flex-row gap-4">
         <div class="card text-center d-flex flex-column align-items-center" style="width: 18rem;">
-            <div class="bg-primary border rounded-circle mt-2 mx-auto" style="width: 150px; height: 150px;"></div>
-            <p class="mt-4"><b>Jauhari</b></p>
-            <p>User</p>
-            <div class="d-flex">
-                <i></i>
-                <i></i>
-                <i></i>
+            <div class="card-header">
+                <h4>Informasi</h4>
             </div>
+                <p class="mt-4">Nama : <b>{{ $user->name }}</b></p>
+                <p>Role : {{ $user->role->name }}</p>
+                <p>Role : {{ $user->email }}</p>
+                    <div class="d-flex">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
         </div>
         <div class="card" style="width: 47.5rem;">
             <nav>
@@ -31,7 +39,7 @@ new class extends Component
                 <hr>
             </nav>
             <div>
-                <div class="input-group input-group-sm px-3 py-2">
+                <!-- <div class="input-group input-group-sm px-3 py-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Profile Image</span>
                     </div>
@@ -39,7 +47,7 @@ new class extends Component
                         Click to upload...
                     </label>
                     <input type="file" id="profileUpload" class="form-control" hidden>
-                </div>
+                </div> -->
                 <div class="input-group input-group-sm px-3 py-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Nama</span>

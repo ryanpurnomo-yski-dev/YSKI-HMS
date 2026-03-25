@@ -1,8 +1,10 @@
 <nav class="navbar navbar-dark" style="background-color: #0e1a2f;">
     <div class="container-fluid px-4">
         <div class="d-flex ms-auto align-items-center gap-4">
-            
-            <a href="/user/setting/profile" class="text-white text-decoration-none custom-icon-hover">
+            <!-- <a href="/user/setting/profile" class="text-white text-decoration-none custom-icon-hover">
+                <i class="fas fa-user fa-lg"></i>
+            </a> -->
+            <a href="{{ route('profile') }}" class="text-white text-decoration-none custom-icon-hover">
                 <i class="fas fa-user fa-lg"></i>
             </a>
 
@@ -17,9 +19,8 @@
 </nav>
 
 <style>
-    /* Efek hover agar lebih interaktif */
     .custom-icon-hover:hover {
-        color: #0474d5 !important; /* Warna biru senada dengan sidebar sebelumnya */
+        color: #0474d5 !important;
         transition: 0.3s;
     }
 </style>

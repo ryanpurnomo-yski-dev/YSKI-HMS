@@ -14,7 +14,12 @@ Volt::route('/user/', 'pages.login')->name('login');
 Route::post('/user/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/user/logout', [AuthController::class, 'logout'])->name('logout.post');
 
-Volt::route('/user/setting/profile', 'pages.profile_hms')->name('profile');
+// Route::get('/user/setting/profile', [AuthController::class, 'profile'])
+//     ->middleware('auth');
+// Volt::route('/user/setting/profile', 'pages.profile_hms')->name('profile');
+Volt::route('/user/setting/profile', 'pages.profile_hms')
+    ->name('profile')
+    ->middleware('auth');
 Route::post('/user/setting/profile', [AuthController::class, 'profile'])->name('profile.post');
 
 Volt::route('/user/dashboard', 'pages.dashboard_hms')->name('dashboard');
@@ -22,10 +27,11 @@ Volt::route('/user/requests', 'pages.requests_hms')->name('requests');
 Volt::route('/user/items', 'pages.items_hms')->name('items');
 Volt::route('/user/items', 'pages.list_items_hms');
 Route::livewire('/user/category', 'pages.kategori_hms')->name('category');
+Volt::route('/user/forms', 'pages.form_tickets_hms')->name('forms');
 Volt::route('/user/tickets', 'pages.tickets_hms')->name('tickets');
 Route::livewire('/user/items/tambah', 'pages.tambah_barang');
 Route::livewire('/user/items/{id}/edit', 'pages.edit_barang');
-Route::livewire('/barang/kategori', 'pages.Data.kategori_hms')->name('kategori');
+// Route::livewire('/barang/kategori', 'pages.Data.kategori_hms')->name('kategori');
 
 // Route::prefix('user')->group(function(){
 //     Volt::route('/home', 'home')->name('pages.user.home');

@@ -1,10 +1,10 @@
 <aside class="d-flex flex-column vh-100 flex-shrink-0 p-0 text-white bg-dark" style="width: 250px;">
     
-    <div class="d-flex align-items-center justify-content-center bg-white" style="height: 8vh;">
+    <div class="d-flex align-items-center justify-content-center bg-white" style="height: 12vh;">
         <img src="{{ asset('images/logo_yski.png') }}" alt="Logo YSKI" class="img-fluid" style="max-height: 80%;">
     </div>
 
-    <div class="w-100" style="height: 6vh; background-color: #0474d5;"></div>
+    <div class="w-100" style="height: 7.5vh; background-color: #0474d5;"></div>
 
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">

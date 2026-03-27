@@ -47,10 +47,18 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function profile()
+    public function edit(Request $request)
     {
-        $user = auth()->user();
-        //$user = User::where('id', $request->id)->first();
-        return redirect()->route('profile');
+        try{
+            $userId = auth()->id();
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email,' . $userId,
+            ]);
+            User::where('id', $userId)->update($validated);
+            return redirect()->route('profile');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

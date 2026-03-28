@@ -20,23 +20,33 @@ $user = Auth::user();
             body{
                 overflow-x: none;
             }
+
+            .content-area{
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+                background-color: #f8f9fa;
+            }
         </style>
     </head>
     <body>
         
-        <div style="display: flex; min-height: 70vh;">
+        {{-- <div style="display: flex; min-height: 70vh;"> --}}
+        <div class="d-flex vh-100 overflow-hidden">
             @if(!Route::is('login'))
                 @include('sidebar.sidebar2', ['user' => $user])
             @endif
-            <div style="flex: 1; display: flex; flex-direction: column;">
+            <div class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
+            {{-- <div style="flex: 1; display: flex; flex-direction: column;"> --}}
                 @if(!Route::is('login'))
                     @include('navbar.navbar2', ['user' => $user])
                 @endif
-                <main style="padding: 20px;">
+                <main class="flex-grow-1 overflow-auto p-4">
                     {{ $slot }}
                 </main>
             </div>
         </div>
         @livewireScripts
+        @stack('scripts')
     </body>
 </html>

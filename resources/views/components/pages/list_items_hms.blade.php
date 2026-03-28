@@ -53,6 +53,48 @@ new class extends Component
 };
 ?>
 
+<style>
+    .table-card {
+        border-radius: 12px;
+    }
+
+    .search-input {
+        width: 220px;
+        max-width: 100%;
+    }
+
+    .entry-select {
+        min-width: 72px;
+    }
+
+    .items-table th {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .items-table td {
+        font-size: 12px;
+    }
+
+    .items-table .code {
+        color: #8f2e6c;
+        font-weight: 700;
+    }
+
+    .items-table tbody tr:nth-child(odd) > td {
+        background-color: #f1f7fd !important; /* biru muda */
+    }
+
+    .items-table tbody tr:nth-child(even) > td {
+        background-color: #ffffff !important; /* putih */
+    }
+
+    .items-table tbody tr:hover > td {
+        background-color: #d8eaff !important;
+    }
+
+</style>
+
 <div class="container-fluid px-0">
     <div class="mb-3">
         <h2 class="mb-1">Barang</h2>
@@ -72,7 +114,7 @@ new class extends Component
                         <option value="5">5</option>
                     </select>
                     <span>entries per page</span>
-                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Tambahkan Barang</button>
+                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Tambah Barang</button>
                 </div>
 
                 <div class="d-flex gap-2">
@@ -130,45 +172,3 @@ new class extends Component
         </div>
     </div>
 </div>
-
-<style>
-    .table-card {
-        border-radius: 12px;
-    }
-
-    .search-input {
-        width: 220px;
-        max-width: 100%;
-    }
-
-    .entry-select {
-        min-width: 72px;
-    }
-
-    .items-table th {
-        font-size: 12px;
-        font-weight: 700;
-    }
-
-    .items-table td {
-        font-size: 12px;
-    }
-
-    .items-table .code {
-        color: #8f2e6c;
-        font-weight: 700;
-    }
-
-    .items-table tbody tr:nth-child(odd) > td {
-        background-color: #f1f7fd !important; /* biru muda */
-    }
-
-    .items-table tbody tr:nth-child(even) > td {
-        background-color: #ffffff !important; /* putih */
-    }
-
-    .items-table tbody tr:hover > td {
-        background-color: #d8eaff !important;
-    }
-
-</style>

@@ -1,17 +1,17 @@
 <?php
 
 use Livewire\Component;
-use App\Models\kategori;
+use App\Models\Kategori;
 
 new class extends Component
 {
-    public $kategoriId, $kategori, $icon;
+    public $KategoriId, $Kategori, $icon;
     public $isEditMode = false; // Penanda mode
 
     public function render()
     {
-        return view('components.pages.kategori_hms', [
-            'Kategori' => kategori::all() 
+        return view('components.pages.Kategori_hms', [
+            'Kategori' => Kategori::all() 
         ]);
     }
 
@@ -19,7 +19,7 @@ new class extends Component
     public function create()
     {
         $this->isEditMode = false;
-        $this->reset(['kategori', 'icon', 'kategoriId']);
+        $this->reset(['Kategori', 'icon', 'KategoriId']);
         $this->dispatch('openModal');
     }
 
@@ -28,8 +28,8 @@ new class extends Component
     {
         $this->isEditMode = true;
         $data = Kategori::findOrFail($id);
-        $this->kategoriId = $data->id;
-        $this->kategori = $data->kategori;
+        $this->KategoriId = $data->id;
+        $this->Kategori = $data->Kategori;
         $this->icon = $data->icon;
         
         $this->dispatch('openModal'); 
@@ -39,39 +39,39 @@ new class extends Component
     public function save()
     {
         $this->validate([
-            'kategori' => 'required',
+            'Kategori' => 'required',
             'icon' => 'required',
         ]);
 
         if ($this->isEditMode) {
-            kategori::find($this->kategoriId)->update([
-                'kategori' => $this->kategori,
+            Kategori::find($this->KategoriId)->update([
+                'Kategori' => $this->Kategori,
                 'icon' => $this->icon,
             ]);
         } else {
-            kategori::create([
-                'kategori' => $this->kategori,
+            Kategori::create([
+                'Kategori' => $this->Kategori,
                 'icon' => $this->icon,
             ]);
         }
 
         $this->dispatch('closeModal');
-        $this->reset(['kategori', 'icon', 'kategoriId']);
+        $this->reset(['Kategori', 'icon', 'KategoriId']);
     }
 
     public function close()
     {
         $this->dispatch('closeModal');
-        $this->reset(['kategori', 'icon', 'kategoriId']);
+        $this->reset(['Kategori', 'icon', 'KategoriId']);
     }
 
     public function delete($id = null, $layer = 0){
         if($layer == 1){
-            kategori::findOrFail($this->kategoriId)->delete();
+            Kategori::findOrFail($this->KategoriId)->delete();
             $this->dispatch('closeModal');
         }else{
-            $data = kategori::findOrFail($id);
-            $this->kategoriId = $data->id;
+            $data = Kategori::findOrFail($id);
+            $this->KategoriId = $data->id;
             
         }
     }
@@ -142,17 +142,7 @@ new class extends Component
                 </tr>
             </thead>
             <tbody>
-                @foreach($Kategori as $item)
-                    <tr wire:key="{{ $item->id }}">
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->kategori}}</td>
-                        <td><i class="{{ $item->icon }}"></i></td>
-                        <td>
-                            <button class="btn btn-primary" wire:click="edit({{ $item->id }})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
-                            <button class="btn btn-outline-danger" style="margin-left:5px" data-bs-toggle="modal" data-bs-target="#staticBackdropdelete" wire:click="delete({{ $item->id, 0 }})">Hapus</button>
-                        </td>
-                    </tr>
-                @endforeach
+                
             </tbody>
         </table>
     </div>
@@ -167,7 +157,7 @@ new class extends Component
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="categories" class="form-label">Nama Kategori : </label>
-                        <input name="category" class="form-control" id="categories" placeholder="" wire:model="kategori">
+                        <input name="category" class="form-control" id="categories" placeholder="" wire:model="Kategori">
                     </div>
                     <div class="mb-3">
                         <label for="Ikon" class="form-label">Icon : </label>

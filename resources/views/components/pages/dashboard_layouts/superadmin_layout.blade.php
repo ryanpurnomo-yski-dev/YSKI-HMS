@@ -67,6 +67,7 @@
         </div>
     </div>
 </div>
+
 @push('scripts')
 <script>
     function renderCharts() {
@@ -106,3 +107,21 @@
     renderCharts();
 </script>
 @endpush
+
+<div class="mt-3 d-flex gap-3">
+    <div class="card">
+        <div class="card-header">
+            <h5>Stock Barang Menipis</h5>
+        </div>
+        <div class="card-body">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Permintaan Terbanyak</h5>
+        </div>
+        <div class="card-body">
+        </div>
+    </div>
+</div>

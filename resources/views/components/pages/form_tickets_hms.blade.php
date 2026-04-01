@@ -1,10 +1,19 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Kategori;
+use App\Models\Tickets;
 
 new class extends Component
 {
-    
+    public $KategoriId, $Kategori, $icon;
+
+    public function render()
+    {
+        return view('components.pages.form_tickets_hms', [
+            'categories' => Kategori::all()
+        ]);
+    }
 };
 ?>
 
@@ -20,6 +29,14 @@ new class extends Component
             <label>Kategori</label>
             <select class="form-control">
                 <option>-- Pilih Kategori --</option>
+                @foreach($categories as $ctgrs => $item)
+                    <option>{{ $item->kategori }}</option>
+                @endforeach
+            </select>
+
+            <label class="mt-2">Sub Kategori</label>
+            <select class="form-control">
+                <option>-- Pilih Sub Kategori --</option>
                 <option>Hardware</option>
                 <option>Software</option>
                 <option>Pengadaan Aset</option>

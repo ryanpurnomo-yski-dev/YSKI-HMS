@@ -11,7 +11,7 @@ new class extends Component
     public function render()
     {
         return view('components.pages.Kategori_hms', [
-            'Kategori' => Kategori::all() 
+            'categories' => Kategori::all() 
         ]);
     }
 
@@ -137,12 +137,40 @@ new class extends Component
                 <tr>
                     <th style="width:10%" onclick="sortTable(0)">No.</th>
                     <th style="width:40%" onclick="sortTable(1)">Kategori</th>
+                    <th style="width:10%">Sub Kategori</th>
                     <th style="width:10%">Icon</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($categories as $ctgrs => $item)
+                <tr>
+                    <td>{{ $ctgrs + 1}}</td>
+                    <td>{{ $item->kategori }}</td>
+                    <td>
+                        @if($item->subkategori)
+                            <details class="custom-details">
+                                <summary class="text-black" style="cursor: pointer; font-weight: 400;">
+                                    Lihat Sub Kategori({{ count(explode(',', $item->subkategori)) }})
+                                </summary>
+                                <div class="mt-2 d-flex flex-wrap gap-1">
+                                    @foreach(explode(',', $item->subkategori) as $sub)
+                                        <span class="badge border text-dark bg-light">
+                                            {{ trim($sub) }}
+                                        </span>
+                                    @endforeach
+                                </div>
+                            </details>
+                        @else
+                            <span class="text-muted small">-</span>
+                        @endif
+                    </td>
+                    <td><i class="{{ $item->icon }}" style="font-size: 50px;"></i></td>
+                    <td>
+                        <button wire:click="edit({{ $item->id }})">Edit</button>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

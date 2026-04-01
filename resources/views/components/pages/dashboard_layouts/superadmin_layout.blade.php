@@ -109,19 +109,97 @@
 @endpush
 
 <div class="mt-3 d-flex gap-3">
-    <div class="card">
+    <div class="card col-md-6">
         <div class="card-header">
             <h5>Stock Barang Menipis</h5>
         </div>
         <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Barang</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Switch Unmanaged Port</td>
+                        <td class="bg-danger text-white rounded-2 text-center p-2">1</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="card">
+    <div class="card col-md-6">
         <div class="card-header">
             <h5>Permintaan Terbanyak</h5>
         </div>
         <div class="card-body">
+            <canvas id="myChart" style="max-height: 300px;"></canvas>
         </div>
     </div>
+    <script>
+        const data = {
+            labels: ['Internet', 'Hardware', 'Software', 'AC', 'Bangunan'],
+            datasets: [{
+                label: 'Jumlah Tiket/Permintaan',
+                data: [65, 45, 30, 20, 10], // Contoh angka statis
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.8)',  // Biru
+                    'rgba(255, 99, 132, 0.8)',  // Merah
+                    'rgba(255, 206, 86, 0.8)',  // Kuning
+                    'rgba(75, 192, 192, 0.8)',  // Hijau Toska
+                    'rgba(153, 102, 255, 0.8)'  // Ungu
+                ],
+                borderColor: [
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 206, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(153, 102, 255)'
+                ],
+                borderWidth: 1,
+                borderRadius: 5 // Membuat ujung bar sedikit melengkung (Chart.js v3+)
+            }]
+        };
+
+        // 2. Konfigurasi
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                indexAxis: 'y', // Ini yang membuat bar menjadi horizontal
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false // Sembunyikan label dataset jika hanya satu
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false // Hilangkan garis vertikal agar lebih bersih
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        };
+
+        // 3. Render Chart
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
 </div>
+

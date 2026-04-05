@@ -20,19 +20,22 @@ class AuthController extends Controller
         switch(true){
             case !$user:
                 return response()->json([
+                    'status' => 'error',
                     'message' => 'Data Tidak Ditemukan'
                 ], 401);
                 break;
             case $user:
                 Auth::login($user);
                 request()->session()->regenerate();
-                return redirect()->route('dashboard');
                 return response()->json([
-                    'message' => 'Berhasil Sign In'
+                    'status' => 'success',
+                    'message' => 'Berhasil Sign In',
+                    'redirect' => route('dashboard')
                 ], 200);
                 break;
             default:
                 return response()->json([
+                    'status' => 'error',
                     'message' => 'Data Email/Password Salah'
                 ]);
         }

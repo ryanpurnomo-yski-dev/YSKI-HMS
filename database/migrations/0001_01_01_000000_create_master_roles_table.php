@@ -26,8 +26,8 @@ return new class extends Migration
             [
                 'name' => 'SuperAdmin',
                 'pages' => 'Data Barang,Transaksi Barang,Riwayat Permintaan,My Tickets,Kategori',
-                'urls' => '/user/items,"",/user/requests,/user/tickets,/user/category',
-                'icons' => 'fas fa-box,fas fa-history,fas fa-ticket-alt,fas fa-tags',
+                'urls' => '/user/items,/user/items/transactions,/user/requests,/user/tickets,/user/category',
+                'icons' => 'fas fa-box,"",fas fa-history,fas fa-ticket-alt,fas fa-tags',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -25,7 +25,7 @@ new class extends Component
                         <option value="5">5</option>
                     </select>
                     <span>entries per page</span>
-                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Buat Ticket</button>
+                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Tambah Barang</button>
                 </div>
             </div>
         </div>

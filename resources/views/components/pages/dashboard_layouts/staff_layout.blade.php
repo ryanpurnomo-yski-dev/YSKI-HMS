@@ -5,7 +5,7 @@
         <button class="btn btn-md bg-primary text-white">Buat Permintaan</button>
     </div>
     <div class="text-white border rounded-3" style="background-color:rgb(124, 168, 168); padding: 10px 20px; width: 70%;" onclick="window.location.href='/user/forms';">
-        <h3>Keluhan</h3> 
+        <h3>Laporan</h3> 
         <p>Laporkan masalah atau keluhan yang anda alami</p>
         <button class="btn btn-md bg-warning text-white">Buat Permintaan</button>
     </div>

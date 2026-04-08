@@ -2,10 +2,32 @@
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\Tickets;
 
 new class extends Component
 {
+    use WithPagination;
+    public $user;
+    
+    public function mount()
+    {
+        $this->user = auth()->user();
+    }
 
+    public function render()
+    {
+        if($this->user->role->name == "Staff"){
+            $Tickets = Tickets::with('category')
+                ->where('user_id', auth()->id())
+                ->get();
+        }else{
+            $Tickets = Tickets::with('category')->get();
+        }
+
+        return view('components.pages.tickets_hms',[
+            'Tickets' => $Tickets
+        ]);
+    }
 }
 
 ?>
@@ -29,6 +51,17 @@ new class extends Component
                         <option value="5">5</option>
                     </select>
                     <span>entries per page</span>
+                    @switch($user->role->name)
+                        @case("Staff")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/forms';">Buat Ticket</button>
+                        @break
+                        @case("Admin")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/';">Tinjau Ticket</button>
+                        @break
+                        @case("SuperAdmin")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/';">Tinjau Ticket</button>
+                        @break
+                    @endswitch
                 </div>
 
                 <div class="d-flex gap-2">
@@ -54,10 +87,24 @@ new class extends Component
                                 <th>Tgl</th>
                                 <th>Status</th>
                                 <th>Action</th>
-                                <th>Note</th>
                                 <th>Acc</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($Tickets as $index)
+                            <tr>
+                                <td>{{ $index->id }}</td>
+                                <td>{{ $index->category->kategori ?? 'N/A' }}</td>
+                                <td>{{ $index->sub_kategori }}</td>
+                                <td>{{ $index->created_at }}</td>
+                                <td>{{ $index->status }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">{{ $index->action }}</button>
+                                </td>
+                                <td>{{ $index->accepted }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             

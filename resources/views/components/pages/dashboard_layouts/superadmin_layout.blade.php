@@ -114,7 +114,7 @@
             <h5>Stock Barang Menipis</h5>
         </div>
         <div class="card-body">
-            <table>
+            <table class="table items-table">
                 <thead>
                     <tr>
                         <th>No</th>

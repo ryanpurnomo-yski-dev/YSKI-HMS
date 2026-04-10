@@ -53,7 +53,7 @@ new class extends Component
                     <span>entries per page</span>
                     @switch($user->role->name)
                         @case("Staff")
-                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/forms';">Buat Ticket</button>
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/tickets/forms';">Buat Ticket</button>
                         @break
                         @case("Admin")
                             <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/';">Tinjau Ticket</button>

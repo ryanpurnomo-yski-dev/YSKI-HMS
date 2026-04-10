@@ -79,7 +79,6 @@
         visibility: visible !important;
     }
 
-    /* Pastikan juga saat sedang transisi (collapsing) tetap visible */
     .collapsing {
         visibility: visible !important;
     }

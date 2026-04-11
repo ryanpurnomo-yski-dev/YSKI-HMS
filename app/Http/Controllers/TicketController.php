@@ -17,7 +17,6 @@ class TicketController extends Controller
         $Ticket->keterangan = $request->query('description');
         $Ticket->pictures = $request->query('picture');
         $Ticket->created_at = now();
-        $Ticket->updated_at = now();
         $Ticket->save();
 
         return redirect()->route('dashboard');

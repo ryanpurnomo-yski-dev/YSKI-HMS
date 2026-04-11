@@ -123,7 +123,7 @@ new class extends Component
                     <option value="5">5</option>
                 </select>
                 <span>entries per page</span>
-                <button type="button" style="margin-left: 30px;" class="btn btn-primary me-1" wire:click="create"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Kategori</button>
+                <button type="button" style="margin-left: 30px;" class="btn btn-primary me-1" wire:click="create" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Kategori</button>
             </div>
 
             <div class="input-group flex-nowrap" style="width:20em">
@@ -185,11 +185,15 @@ new class extends Component
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="categories" class="form-label">Nama Kategori : </label>
-                        <input name="category" class="form-control" id="categories" placeholder="" wire:model="Kategori">
+                        <input name="category" class="form-control" id="categories" placeholder="Example" wire:model="Kategori">
+                    </div>
+                    <div class="mb-3">
+                        <label for="categories" class="form-label">Nama Sub Kategori : </label>
+                        <input name="category" class="form-control" id="categories" placeholder="Example1,Example2" wire:model="Kategori">
                     </div>
                     <div class="mb-3">
                         <label for="Ikon" class="form-label">Icon : </label>
-                        <input name="icons" class="form-control" id="Ikon" placeholder="" wire:model="icon">
+                        <input name="icons" class="form-control" id="Ikon" placeholder="fa fa-object" wire:model="icon">
                     </div>
                 </div>
                 <div class="modal-footer">

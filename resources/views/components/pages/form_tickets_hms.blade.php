@@ -25,24 +25,21 @@ new class extends Component
 
     public function submit()
     {
-        //dd($this->selectedCategory);
-        
-        // Http::post(route('tickets.post'), [
-        //     'category_id' => $this->selectedCategory,
-        //     'sub_category' => $this->selectedSubCategory
-        // ]);
         if ($this->picture === null) {
             $this->addError('picture', 'File lampiran harus diisi');
             return;
         }
+
+        $picturePath = $this->picture->store('temp', 'public');
+
         return redirect()->route('tickets.post',[
             'category_id' => $this->selectedCategory,
             'sub_category' => $this->selectedSubCategory,
             'description' => $this->description,
-            'picture' => $this->picture->getClientOriginalName()
+            'temp_picture' => $picturePath
+            // $this->picture->getClientOriginalName()
             // base64_encode($this->picture)
         ]);
-        //dd($response->status(), $response->body());
     }
 
     public function render()
@@ -56,8 +53,7 @@ new class extends Component
 
 <div class="container-fluid px-0">
     <h2>Form Laporan</h2>
-    <!-- <div style="display:flex"><p>Home / Barang /&nbsp;</p><p style="color:#009dff">Kategori</p></div> -->
-    
+
     <div class="card table-card border-1 shadow-sm">
         <div class="card-header bg-light border-bottom">
             <h6>Formulir Laporan</h6>

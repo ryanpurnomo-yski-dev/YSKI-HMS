@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ApprovalController;
 
 Route::redirect('/', '/user/')->name('/');
 
@@ -45,5 +46,8 @@ Route::prefix('user')->group(function(){
         Volt::route('/tickets/forms', 'pages.form_tickets_hms')->name('tickets.forms');
         Volt::route('/tickets', 'pages.tickets_hms')->name('tickets');
         Route::get('/tickets/post', [TicketController::class, 'store'])->name('tickets.post');
+
+        //Approvals
+        Route::get('/approval/save', [ApprovalController::class, 'store'])->name('approval.save');
     });
 });

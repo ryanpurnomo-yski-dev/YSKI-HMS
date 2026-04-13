@@ -18,7 +18,14 @@ new class extends Component
 
     public function setTicket($id)
     {
-        $this->selectedTicket = Tickets::with('category')->find($id);
+        $this->selectedTicket = Tickets::with('category', 'user')->find($id);
+    }
+
+    public function approveTicket($id)
+    {
+        return redirect()->route('approval.save', [
+
+        ]);
     }
 
     public function getEnumValues($table, $column)
@@ -116,7 +123,7 @@ new class extends Component
                         <tbody>
                             @foreach($Tickets as $index)
                             <tr>
-                                <td>{{ $index->id }}</td>
+                                <td>{{ $index->no_ticket }}</td>
                                 <td>{{ $index->category->kategori ?? 'N/A' }}</td>
                                 <td>{{ $index->sub_kategori }}</td>
                                 <td>{{ $index->created_at }}</td>
@@ -128,9 +135,13 @@ new class extends Component
                                 @if($user->role->name == "Admin" || $user->role->name == "SuperAdmin")
                                 <td class="text-center">
                                     <div class="justify-content-center align-items-center gap-2">
-                                        <a href="" class="btn btn-sm btn-primary w-10">
+                                        <button type="button"
+                                                class="btn btn-sm btn-primary w-10"
+                                                wire:click="setTicket({{ $index->id }})"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#detailReportView">
                                             <i class="fas fa-info"></i>
-                                        </a>
+                                        </button>
                                         <button type="button" 
                                                 class="btn btn-sm btn-success w-10" 
                                                 wire:click="setTicket({{ $index->id }})"
@@ -147,6 +158,52 @@ new class extends Component
                     </table>
                 </div>
 
+                <div class="modal fade" id="detailReportView" tabindex="-1" arialabelledby="approvalReviewLabel" aria-hidden="true" wire:ignore.self>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Detail Report</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                @if($selectedTicket)
+                                    <div class="mb-3">
+                                        <h6><strong>No Ticket </strong></h6>
+                                        <input type="text" readonly class="form-control" value="{{ $selectedTicket->no_ticket }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6><strong>User Email </strong></h6>
+                                        <input type="text" readonly class="form-control" value="{{ $selectedTicket->user->email }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6><strong>Kategori </strong></h6>
+                                        <input type="text" readonly class="form-control" value="{{ $selectedTicket->category->kategori }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6><strong>Sub Kategori </strong></h6>
+                                        <input type="text" readonly class="form-control" value="{{ $selectedTicket->sub_kategori }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6><strong>Gambar </strong></h6>
+                                        <img src="{{ asset('storage/' . $selectedTicket->pictures) }}" class="img-fluid rounded">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6><strong>Keterangan </strong></h6>
+                                        <textarea readonly class="form-control">{{ $selectedTicket->keterangan }}</textarea>
+                                    </div>
+                                @else
+                                    <div class="text-center">
+                                        <span class="spinner-border spinner-border-sm"></span> Loading...
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="modal fade" id="approvalReview" tabindex="-1" arialabelledby="approvalReviewLabel" aria-hidden="true" wire:ignore.self>
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -158,6 +215,7 @@ new class extends Component
                             </div>
 
                             <div class="modal-body">
+                                <form>
                                 @if($selectedTicket)
                                     <div class="mb-3">
                                         <h6><strong>Status </strong></h6>
@@ -177,7 +235,9 @@ new class extends Component
                                                     <option value="{{ $status }}">{{ $action }}</option>
                                                 @endif
                                             @endforeach
-                                        </select>   
+                                        </select>  
+                                        <strong>Keterangan </strong>
+                                        <textarea class="form-control"></textarea> 
                                     </div>
                                 @else
                                     <div class="text-center">
@@ -190,6 +250,7 @@ new class extends Component
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                     <button type="button" class="btn btn-success" wire:click="approveTicket">Ya, Setujui</button>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>

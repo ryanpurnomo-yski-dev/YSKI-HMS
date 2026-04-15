@@ -10,6 +10,7 @@ new class extends Component
     use WithPagination;
     public $user;
     public $selectedTicket = null;
+    public $selectedStatus, $selectedAction, $selectedNote;
     
     public function mount()
     {
@@ -21,10 +22,13 @@ new class extends Component
         $this->selectedTicket = Tickets::with('category', 'user')->find($id);
     }
 
-    public function approveTicket($id)
+    public function approveTicket()
     {
         return redirect()->route('approval.save', [
-
+            'idTicket' => $this->selectedTicket->id,
+            'status' => $this->selectedStatus,
+            'action' => $this->selectedAction,
+            'note' => $this->selectedNote
         ]);
     }
 
@@ -219,7 +223,7 @@ new class extends Component
                                 @if($selectedTicket)
                                     <div class="mb-3">
                                         <h6><strong>Status </strong></h6>
-                                        <select class="form-select">
+                                        <select class="form-select" name="status" wire:model="selectedStatus">
                                             <option value="{{ $selectedTicket->status }}">{{ $selectedTicket->status }}</option>
                                             @foreach($allStatuses as $status)
                                                 @if($status !== $selectedTicket->status)
@@ -228,16 +232,16 @@ new class extends Component
                                             @endforeach
                                         </select>
                                         <strong>Action </strong> 
-                                        <select class="form-select">
-                                            <option value="$selectedTicket->action">{{ $selectedTicket->action }}</option>
+                                        <select class="form-select" name="action" wire:model="selectedAction">
+                                            <option value="{{ $selectedTicket->action }}">{{ $selectedTicket->action }}</option>
                                             @foreach($allActions as $action)
                                                 @if($action !== $selectedTicket->action)
-                                                    <option value="{{ $status }}">{{ $action }}</option>
+                                                    <option value="{{ $action }}">{{ $action }}</option>
                                                 @endif
                                             @endforeach
                                         </select>  
                                         <strong>Keterangan </strong>
-                                        <textarea class="form-control"></textarea> 
+                                        <textarea class="form-control" name="note" wire:model="selectedNote"></textarea> 
                                     </div>
                                 @else
                                     <div class="text-center">

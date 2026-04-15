@@ -48,9 +48,9 @@ class TicketController extends Controller
         if(!$lastTicket){
             $nextNumber = 1;
         }else{
-            $lastNumber = (int) substr($lastTicket->no_ticket, -5);
+            $lastNumber = (int) substr($lastTicket->no_ticket, 2);
             $nextNumber = $lastNumber + 1;
         }
-        return sprintf('%d%05d', $categoryId, $nextNumber);
+        return sprintf('T%d%04d', $categoryId, $nextNumber);
     }
 }

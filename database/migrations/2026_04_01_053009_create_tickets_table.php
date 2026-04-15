@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('no_ticket');
+            $table->string('no_ticket');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('kategori_id');
             $table->string('sub_kategori');

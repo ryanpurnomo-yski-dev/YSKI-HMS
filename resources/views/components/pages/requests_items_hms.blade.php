@@ -10,12 +10,12 @@ new class extends Component
 
 <div class="container-fluid px-0">
     <div class="mb-3">
-        <h2 class="mb-1">Riwayat Permintaan</h2>
+        <h2 class="mb-1">Riwayat Permintaan Barang</h2>
     </div>
 
     <div class="card table-card border-1 rounded-3 shadow-sm">
         <div class="card-header bg-light border-bottom">
-            <h6 class>Status Riwayat Permintaan</h6>
+            <h6 class>Status Riwayat Permintaan Barang</h6>
         </div>
         <div class="card-body p-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">

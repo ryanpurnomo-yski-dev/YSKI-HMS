@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('approvals', function (Blueprint $table) {
+        Schema::create('request_barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('id_kategori_approval');
-            $table->enum('tipe_kategori_approval', ['Ticket', 'Barang']);
-            $table->string('status');
-            $table->string('action');
-            $table->text('note')->nullable();
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('approvals');
+        Schema::dropIfExists('request_barangs');
     }
 };

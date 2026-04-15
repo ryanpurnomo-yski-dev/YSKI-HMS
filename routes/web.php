@@ -31,7 +31,7 @@ Route::prefix('user')->group(function(){
         Volt::route('/items/forms', 'pages.form_items_hms')->name('items.forms');
         Volt::route('/items', 'pages.items_hms')->name('items');
         Volt::route('/items', 'pages.list_items_hms');
-        Route::livewire('/items/tambah', 'pages.tambah_barang');
+        Route::livewire('/items/tambah', 'pages.form_requests_items_hms');
         Route::livewire('/items/{id}/edit', 'pages.edit_barang');
 
         //Transactions

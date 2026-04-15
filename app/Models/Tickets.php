@@ -8,6 +8,7 @@ class Tickets extends Model
 {
     protected $table = 'tickets';
     protected $fillable = [
+        'no_ticket',
         'kategori_id',
         'user_id',
         'keterangan',
@@ -26,4 +27,15 @@ class Tickets extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }   
+
+    public function approvals()
+    {
+        return $this->morphMany(
+            Approvals::class, 
+            'approvable', 
+            'tipe_kategori_approval', 
+            'id_kategori_approval',
+            'no_ticket'
+        );
+    }
 }

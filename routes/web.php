@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ApprovalController;
@@ -16,8 +17,8 @@ Route::prefix('user')->group(function(){
 
     Route::middleware('auth')->group(function() {
         //Dashboard
+        Route::get('/login/dashboard', [DashboardController::class, 'index'])->name('dashboardController');
         Volt::route('/dashboard', 'pages.dashboard_hms')->name('dashboard');
-
         //Settings
         Volt::route('/setting/profile', 'pages.profile_hms')
             ->name('profile')
@@ -25,7 +26,7 @@ Route::prefix('user')->group(function(){
         Route::post('/setting/profile', [AuthController::class, 'profile'])->name('profile.post');
         
         //Requests
-        Volt::route('/requests', 'pages.requests_items_hms')->name('requests');
+        Volt::route('/items/requests', 'pages.requests_items_hms')->name('requests');
 
         //Items
         Volt::route('/items/forms', 'pages.form_items_hms')->name('items.forms');

@@ -4,7 +4,12 @@ use Livewire\Component;
 
 new class extends Component
 {
-
+    public $user;
+    
+    public function mount()
+    {
+        $this->user = auth()->user();
+    }
 };
 ?>
 
@@ -25,7 +30,17 @@ new class extends Component
                         <option value="5">5</option>
                     </select>
                     <span>entries per page</span>
-                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Tambah Barang</button>
+                    @switch($user->role->name)
+                        @case("Staff")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/tickets/forms';">Buat Ticket</button>
+                        @break
+                        @case("Admin")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/';">Tinjau Ticket</button>
+                        @break
+                        @case("SuperAdmin")
+                            <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/';">Tinjau Ticket</button>
+                        @break
+                    @endswitch
                 </div>
             </div>
         </div>

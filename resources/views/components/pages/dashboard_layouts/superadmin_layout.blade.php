@@ -6,7 +6,7 @@
                     <i class="fas fa-users text-primary" style="font-size: 24px;"></i>
                 </div>
                 <div>
-                    <h2 class="fw-bold mb-0">9</h2>
+                    <h2 class="fw-bold mb-0">{{ is_array($User) || $User instanceof \Countable ? count($User) : 0 }}</h2>
                     <small class="text-success">Active Users</small>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <i class="fas fa-box text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
-                <h2 class="fw-bold mb-0">9</h2>
+                <h2 class="fw-bold mb-0">{{ is_array($Barang) || $Barang instanceof \Countable ? count($Barang) : 0 }}</h2>
                 <small class="text-success">Items Barang</small>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <i class="fas fa-ticket text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
-                <h2 class="fw-bold mb-0">9</h2>
+                <h2 class="fw-bold mb-0">{{ is_array($Tickets) || $Tickets instanceof \Countable ? count($Tickets) : 0 }}</h2>
                 <small class="text-success">Verifikasi</small>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <i class="fas fa-info text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
-                <h2 class="fw-bold mb-0">9</h2>
+                <h2 class="fw-bold mb-0">{{ is_array($Approvals) || $Approvals instanceof \Countable ? count($Approvals) : 0 }}</h2>
                 <small class="text-success">Pending</small>
             </div>
         </div>

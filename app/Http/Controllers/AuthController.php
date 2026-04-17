@@ -30,7 +30,7 @@ class AuthController extends Controller
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Berhasil Sign In',
-                    'redirect' => route('dashboard')
+                    'redirect' => route('dashboardController')
                 ], 200);
                 break;
             default:

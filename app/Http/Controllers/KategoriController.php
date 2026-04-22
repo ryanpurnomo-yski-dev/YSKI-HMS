@@ -15,14 +15,4 @@ class KategoriController extends Controller
         $Kategori->icon = $request('');
         $Kategori->save();
     }
-
-    public function exportPDF(Request $request)
-    {
-
-    }
-
-    public function exportExcel(Request $request)
-    {
-
-    }
 }

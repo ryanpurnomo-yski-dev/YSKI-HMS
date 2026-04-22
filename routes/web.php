@@ -37,8 +37,6 @@ Route::prefix('user')->group(function(){
 
         //Transactions
         Volt::route('/items/transactions', 'pages.transaction_items_hms');
-        Route::post('/items/transactions/export-pdf', [KategoriController::class, 'exportPDF']);
-        Route::post('/items/transactions/export-excel', [KategoriController::class, 'exportExcel']);
 
         //Categories
         Route::livewire('/category', 'pages.kategori_hms')->name('category');

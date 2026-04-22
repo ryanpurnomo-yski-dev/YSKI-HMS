@@ -115,8 +115,8 @@ new class extends Component
                 <select class="form-select form-select-sm w-auto entry-select" wire:model="perPage">
                     <option>-- Pilih Filter --</option>
                 </select>
-                @include('components.button.pdf')
-                @include('components.button.excel')
+                <livewire:button.pdf />
+                <livewire:button.excel />
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4 mb-3">
                 <div class="d-flex align-items-center gap-2 small text-secondary">

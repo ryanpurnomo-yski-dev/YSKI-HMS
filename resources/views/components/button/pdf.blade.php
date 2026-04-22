@@ -1,6 +1,3 @@
-<form method="POST" action="{{ route('items.transactions.export.pdf') }}" class="d-inline">
-    @csrf
-    <button type="submit" class="btn btn-sm btn-danger">
-        PDF
-    </button>
-</form>
+<button type="submit" class="btn btn-sm btn-danger">
+    <i class="fa fa-file-pdf"></i> PDF
+</button>

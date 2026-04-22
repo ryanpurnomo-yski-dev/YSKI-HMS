@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\PDFController;
 
 Route::redirect('/', '/user/')->name('/');
 
@@ -52,5 +53,6 @@ Route::prefix('user')->group(function(){
 
         //PDF Button
         Route::get('/excel/export', [ExcelController::class, 'export'])->name('excel.export');
+        Route::get('/pdf/export', [PDFController::class, 'export'])->name('pdf.export');
     });
 });

@@ -5,10 +5,12 @@ use App\Models\Barang;
 use App\Models\Tickets;
 use App\Models\Approvals;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 new class extends Component
 {
-    public $user, $Barang, $Tickets, $Approvals;
+    public $user, $Barang, $Tickets, $Approvals, $currentStatus;
+    public $allStatuses = [];
 
     public function mount()
     {
@@ -16,6 +18,27 @@ new class extends Component
         $this->Barang = session('Barang') ?? Barang::all();
         $this->Tickets = session('Tickets') ?? Tickets::all();
         $this->Approvals = session('Approvals') ?? Approvals::all();
+        $this->allStatuses = $this->getEnumValues('tickets', 'status');
+        $this->currentStatus = $this->allStatuses[0] ?? null;
+    }
+
+    
+    public function getEnumValues($table, $column)
+    {
+        $type= DB::select("SHOW COLUMNS FROM $table WHERE Field = '$column'")[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $values = [];
+        foreach(explode(',', $matches[1]) as $value){
+            $values[] = trim($value, "'");
+        }
+        return $values;
+    }
+
+    public function switchStatus()
+    {
+        $currentIndex = array_search($this->currentStatus, $this->allStatuses);
+        $nextIndex = ($currentIndex + 1) % count($this->allStatuses);
+        $this->currentStatus = $this->allStatuses[$nextIndex];
     }
 };
 ?>

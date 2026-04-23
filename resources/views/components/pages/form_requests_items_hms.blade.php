@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Barang;
 use Livewire\Component;
 
@@ -9,6 +10,7 @@ new class extends Component
     public string $kategori_barang = '';
     public string $nama_barang = '';
     public string $merk_barang = '';
+    public $user;
 
     protected function rules(): array
     {
@@ -20,19 +22,19 @@ new class extends Component
         ];
     }
 
-    public function save(): void
+    public function mount()
     {
-        $this->validate();
+        $this->user = auth()->user();
+    }
 
-        Barang::create([
+    public function save()
+    {
+        return redirect()->route('items.post',[
             'kode_barang' => $this->kode_barang,
             'kategori_barang' => $this->kategori_barang,
             'nama_barang' => $this->nama_barang,
             'merk_barang' => $this->merk_barang,
         ]);
-
-        $this->reset();
-        session()->flash('success', 'Barang berhasil ditambahkan.');
     }
 
     public function render()
@@ -62,6 +64,7 @@ new class extends Component
                     </div>
             @endif
 
+            @if($user->role->name === "Staff")
             <form wire:submit.prevent="save" class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label">Kategori Barang</label>
@@ -124,6 +127,35 @@ new class extends Component
                     <a href="/user/items" class="btn btn-outline-secondary">Kembali</a>
                 </div>
             </form>
+            @else 
+            <form wire:submit.prevent="save" class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Kategori Barang</label>
+                    <input type="text" class="form-control" name="kategori_barang">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Nama Barang</label>
+                    <input type="text" class="form-control" name="nama_barang">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Merk Barang</label>
+                    <input type="text" class="form-control" name="merk_barang">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Kode Barang</label>
+                    <input type="text" class="form-control" name="kode_barang">
+                </div>
+
+                <div class="col-12 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="/user/items" class="btn btn-outline-secondary">Kembali</a>
+                </div>
+            </form>
+            @endif
+
         </div>
     </div>
 </div>

@@ -25,7 +25,7 @@ return new class extends Migration
         DB::table('master_roles')->insert([
             [
                 'name' => 'SuperAdmin',
-                'pages' => 'Data Barang,Transaksi Barang,Riwayat Permintaan Barang,My Tickets,Kategori',
+                'pages' => 'Data Barang,Transaksi Barang,Riwayat Permintaan Barang,Riwayat Ticket,Kategori Masalah',
                 'urls' => '/user/items,/user/items/transactions,/user/items/requests,/user/tickets,/user/category',
                 'icons' => 'fas fa-box,fa fa-exchange,fas fa-history,fas fa-ticket-alt,fas fa-tags',
                 'created_at' => now(),
@@ -33,8 +33,8 @@ return new class extends Migration
             ],
             [
                 'name' => 'Admin',
-                'pages' => 'Data Barang,Riwayat Permintaan Barang,My Tickets',
-                'urls' => '/user/items,/user/items/requests,/user/tickets',
+                'pages' => 'Data Barang,Riwayat Permintaan Barang,My Tickets,Kategori Masalah',
+                'urls' => '/user/items,/user/items/requests,/user/tickets,/user/category',
                 'icons' => 'fas fa-box,fas fa-ticket-alt',
                 'created_at' => now(),
                 'updated_at' => now(),

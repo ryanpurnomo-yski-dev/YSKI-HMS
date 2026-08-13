@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kategori extends Model
+class KategoriBarang extends Model
 {
 
     /**
@@ -12,11 +12,9 @@ class Kategori extends Model
      *
      * @var list<string>
      */
-    protected $table = 'categories';
+    protected $table = 'item_categories';
     public $timestamps = false;
     protected $fillable = [
-        'kategori',
-        'subkategori',
-        'icon',
+        'kategori'
     ];
 }

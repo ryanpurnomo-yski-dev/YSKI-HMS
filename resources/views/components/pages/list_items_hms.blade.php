@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Barang;
+use App\Models\KategoriBarang;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,6 +12,7 @@ new class extends Component
     protected string $paginationTheme = 'bootstrap';
     public string $search = '';
     public string $searchInput = '';
+    public string $kategori = '';
 
     public function applySearch(): void
     {
@@ -25,10 +27,27 @@ new class extends Component
         $this->resetPage();
     }
 
+    // public function render()
+    // {
+    //     return view('components.pages.list_items_hms', [
+    //         'items' => Barang::query()
+    //             ->when($this->search !== '', function ($query) {
+    //                 $keyword = '%' . $this->search . '%';
+    //                 $query->where(function ($q) use ($keyword) {
+    //                     $q->where('kode_barang', 'like', $keyword)
+    //                         ->orWhere('kategori_barang', 'like', $keyword)
+    //                         ->orWhere('nama_barang', 'like', $keyword)
+    //                         ->orWhere('merk_barang', 'like', $keyword);
+    //                 });
+    //             })
+    //             ->orderBy('id', 'desc')
+    //             ->paginate($this->perPage),
+    //     ])->layout('layouts.app');
+    // }
 
-    public function render()
+    public function with(): array
     {
-        return view('components.pages.list_items_hms', [
+        return [
             'items' => Barang::query()
                 ->when($this->search !== '', function ($query) {
                     $keyword = '%' . $this->search . '%';
@@ -41,7 +60,17 @@ new class extends Component
                 })
                 ->orderBy('id', 'desc')
                 ->paginate($this->perPage),
-        ])->layout('layouts.app');
+        ];
+    }
+
+    public function store():void
+    {
+        KategoriBarang::create([
+            'kategori' => $this->kategori,
+        ]);
+        $this->reset('kategori');
+        session()->flash('success', 'Kategori berhasil ditambahkan.');
+        $this->dispatch('category-saved');
     }
 
     public function delete(int $id): void
@@ -114,7 +143,8 @@ new class extends Component
                         <option value="5">5</option>
                     </select>
                     <span>entries per page</span>
-                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-outline-primary me-1" onclick="window.location.href='/user/items/tambah';">Tambah Barang</button>
+                    <button type="button" style="margin-left: 30px;" class="btn btn-sm btn-primary me-1" onclick="window.location.href='/user/items/tambah';"><i class="fas fa-box"></i> Tambah Barang</button>
+                    <button type="button" style="margin-left: 5px;" class="btn btn-sm btn-primary me-1" wire:click="" data-bs-toggle="modal" data-bs-target="#itemsCategoryModal"><i class="fas fa-tags"></i> Tambah Kategori Barang</button>
                 </div>
 
                 <div class="d-flex gap-2">
@@ -154,8 +184,8 @@ new class extends Component
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->merk_barang }}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-outline-warning me-1" onclick="window.location.href='/user/items/{{ $item->id }}/edit';">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" x-on:click.prevent="if(confirm('Yakin ingin menghapus?')) $wire.delete({{ $item->id }})">Hapus</button>
+                                    <button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href='/user/items/{{ $item->id }}/edit';"><i class="fas fa-edit"></i> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-danger" x-on:click.prevent="if(confirm('Yakin ingin menghapus?')) $wire.delete({{ $item->id }})"><i class="fas fa-trash"></i> Hapus</button>
                                 </td>
                             </tr>
                         @empty
@@ -166,6 +196,8 @@ new class extends Component
                     </tbody>
                 </table>
             </div>
+
+            @include("components.modal.items_category_modal")
         </div>
         <div class="card-footer bg-white d-flex justify-content-end">
             {{ $items->links() }}

@@ -105,9 +105,17 @@ new class extends Component
                     @enderror
                 </div>
 
+                <div class="col-md-6">
+                    <label class="form-label">Kuantitas Barang</label>
+                    <input type="number" class="form-control" wire:model.defer="merk_barang" placeholder="Contoh: 10">
+                    @error('merk_barang')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="/user/items" class="btn btn-outline-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <a href="/user/items" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
             </form>
         </div>

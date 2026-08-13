@@ -5,6 +5,8 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangTransactionController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\ExcelController;
@@ -28,17 +30,20 @@ Route::prefix('user')->group(function(){
         Route::post('/setting/profile', [AuthController::class, 'profile'])->name('profile.post');
         
         //Requests
-        Volt::route('/items/requests', 'pages.requests_items_hms')->name('requests');
+        Volt::route('/items/requests', 'pages.form_requests_items_hms')->name('items.requests');
 
         //Items
         Volt::route('/items/forms', 'pages.form_items_hms')->name('items.forms');
-        Volt::route('/items', 'pages.items_hms')->name('items');
-        Volt::route('/items', 'pages.list_items_hms');
-        Route::livewire('/items/tambah', 'pages.form_requests_items_hms');
-        Route::livewire('/items/{id}/edit', 'pages.edit_barang');
+        Volt::route('/items', 'pages.list_items_hms')->name('items');
+        Route::post('/items/save', [BarangController::class, 'store'])->name('items.post');
+        Volt::route('/items/lists', 'pages.list_items_hms');
+        Route::livewire('/items/tambah', 'pages.procurement_items_hms')->name('items.itemsProcurement');
+        Route::livewire('/items/request/tambah', 'pages.form_requests_items_hms')->name('items.requestForms');
+        Route::livewire('/items/{id}/edit', 'pages.edit_items_hms');
 
         //Transactions
         Volt::route('/items/transactions', 'pages.transaction_items_hms');
+        Route::post('/items/transactions/save', [BarangTransactionController::class, 'store'])->name('items.itemsTransaction.post');
 
         //Categories
         Route::livewire('/category', 'pages.kategori_hms')->name('category');

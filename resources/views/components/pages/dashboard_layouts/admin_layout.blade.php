@@ -24,13 +24,13 @@
         </div>
     </div>
     <div class="border rounded-3" style="padding: 10px 20px; width: 70%;">
-        <h3>Ticket Done</h3> 
+        <h3>Transaksi Barang</h3> 
         <div class="d-flex align-items-center justify-content-between">
-            <div class="bg-light p-3 rounded-circle">
-                <i class="fas fa-ticket text-primary" style="font-size: 24px;"></i>
+            <div class="bg-light border border-secondary p-3 rounded-circle" style="width: 60px; height: 60px;">
+                <i class="fa fa-exchange text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
-                <h2 class="fw-bold mb-0">9</h2>
+                <h2 class="fw-bold mb-0">{{ is_array($Tickets) && $Tickets->where('status', 'Resolved') ? count($Tickets) : 0 }}</h2>
                 <small class="text-success">Verifikasi</small>
             </div>
         </div>

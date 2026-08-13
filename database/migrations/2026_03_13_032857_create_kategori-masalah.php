@@ -9,14 +9,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('trouble_categories', function (Blueprint $table) {
             $table->id();
             $table->string('kategori');
             $table->string('subkategori');
             $table->string('icon');
         });
 
-        DB::table('categories')->insert([
+        DB::table('trouble_categories')->insert([
             [
                 'kategori' => 'Internet',
                 'subkategori' => 'Koneksi Terputus (RTO),Lambat / Bandwidth Limit,Masalah Router/Modem',
@@ -47,6 +47,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('trouble_categories');
     }
 };

@@ -2,7 +2,7 @@
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Kategori;
+use App\Models\KategoriMasalah;
 use App\Models\Tickets;
 use Illuminate\Support\Facades\Http;
 
@@ -18,7 +18,7 @@ new class extends Component
 
     public function updatedSelectedCategory($value)
     {
-        $category = Kategori::find($value);
+        $category = KategoriMasalah::find($value);
         $this->subCategories = $category ? array_filter(array_map('trim', explode(',', $category->subkategori))) : [];
         $this->selectedSubCategory = null;
     }
@@ -45,7 +45,7 @@ new class extends Component
     public function render()
     {
         return view('components.pages.form_tickets_hms', [
-            'categories' => Kategori::all()
+            'categories' => KategoriMasalah::all()
         ]);
     }
 };
@@ -87,8 +87,8 @@ new class extends Component
             <input class="form-control" type="file" wire:model="picture">
 
             <div class="mt-3 d-flex flex-row gap-2 align-items-center justify-content-center">
-                <button type="submit" class="btn bg-primary text-white">Simpan</button>
-                <button class="btn bg-secondary text-white">Batal</button>
+                <button type="submit" class="btn bg-primary text-white"><i class="fas fa-save"></i> Simpan</button>
+                <a href="/user/tickets" class="btn bg-secondary text-white"><i class="fas fa-times"></i> Batal</a>
             </div>
         </form>
     </div>

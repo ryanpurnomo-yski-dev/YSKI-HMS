@@ -4,24 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\BarangTransaction;
 
 class BarangController extends Controller
 {
     public function store(Request $request)
     {
-        /*
-        $request->validate([
+        $Barang = Barang::create($request->only([
+            'kode_barang',
+            'kategori_barang',
+            'nama_barang',
+            'merk_barang',
+            'kuantitas_barang',
+        ]));
 
-        ]);
-        */
+        $user = json_decode($request->input('user'), true);
+        $userId = $user['id'];
 
-        $Barang = new Barang();
-        $Barang->kode_barang = $request->query('kode_barang');
-        $Barang->kategori_barang = $request->query('kategori_barang');
-        $Barang->nama_barang = $request->query('nama_barang');
-        $Barang->merk_barang = $request->query('merk_barang');
-        $Barang->save();
+        BarangTransaction::create(array_merge(
+            ['user_id' => $userId],
+            $Barang->only([
+                'kode_barang',
+                'kuantitas_barang',
+            ]),
+            ['jenis_transaksi' => 'in']
+        ));
 
-        return redirect()->route('');
+        return redirect()->route('items');
     }
 }

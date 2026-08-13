@@ -17,6 +17,25 @@ class Approvals extends Model
         'updated_at'
    ];
 
+   public function syncFromTickets()
+   {
+      $tickets = Tickets::all();
+      foreach($tickets as $ticket){
+         $Exists = self::where('tipe_kategori_approval', Tickets::class)
+                       ->where('id_kategori_approval', $ticket->no_ticket)
+                       ->exists();
+         if (!$Exists) {
+            self::create([
+                'id_kategori_approval'   => $ticket->no_ticket,
+                'tipe_kategori_approval' => Tickets::class,
+                'status'                 => $ticket->status ?? 'Pending',
+                'action'                 => $ticket->action ?? null,
+                'note'                   => null,
+            ]);
+        }
+      }
+   }
+
    public function approvable()
    {
     return $this->morphTo(null, 'tipe_kategori_approval', 'id_kategori_approval');

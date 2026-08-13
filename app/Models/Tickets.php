@@ -18,9 +18,28 @@ class Tickets extends Model
         'action'
     ];
 
+    public function syncToApproval()
+    {
+        $existingApproval = $this->approvals()->first();
+
+        if ($existingApproval) {
+            $existingApproval->update([
+                'status' => $this->status,
+                'action' => $this->action,
+            ]);
+            return $existingApproval;
+        }
+
+        return $this->approvals()->create([
+            'status'    => $this->status ?? 'Pending',
+            'action'    => $this->action ?? null,
+            'note'      => null,
+        ]);
+    }
+
     public function category()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id');
+        return $this->belongsTo(KategoriMasalah::class, 'kategori_id');
     }
 
     public function user()

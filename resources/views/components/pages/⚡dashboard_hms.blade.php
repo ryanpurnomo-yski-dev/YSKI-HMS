@@ -17,7 +17,9 @@ new class extends Component
         $this->user = auth()->user();
         $this->Barang = session('Barang') ?? Barang::all();
         $this->Tickets = session('Tickets') ?? Tickets::all();
-        $this->Approvals = session('Approvals') ?? Approvals::all();
+        // Approvals::syncFromTickets();
+        // $this->Approvals = session('Approvals') ?? Approvals::all();
+        $this->Approvals = Tickets::with('approvals')->get();
         $this->allStatuses = $this->getEnumValues('tickets', 'status');
         $this->currentStatus = $this->allStatuses[0] ?? null;
     }
@@ -42,7 +44,16 @@ new class extends Component
     }
 };
 ?>
+<style>
+    .status-btn {
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
 
+    .status-btn:active {
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.25), inset 0 2px 6px rgba(0,0,0,0.2) !important;
+        transform: scale(0.93);
+    }
+</style>
 <div> 
     <div class="content" style="display: flex; flex-direction: column;">
         

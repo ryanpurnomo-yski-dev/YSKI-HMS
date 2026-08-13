@@ -24,10 +24,10 @@
         </div>
     </div>
     <div class="border rounded-3" style="padding: 10px 20px; width: 70%;">
-        <h3>Ticket Done</h3> 
+        <h3>Transaksi Barang</h3> 
         <div class="d-flex align-items-center justify-content-between">
-            <div class="bg-light p-3 rounded-circle">
-                <i class="fas fa-ticket text-primary" style="font-size: 24px;"></i>
+            <div class="bg-light border border-secondary p-3 rounded-circle" style="width: 60px; height: 60px;">
+                <i class="fa fa-exchange text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
                 <h2 class="fw-bold mb-0">{{ is_array($Tickets) && $Tickets->where('status', 'Resolved') ? count($Tickets) : 0 }}</h2>
@@ -40,9 +40,10 @@
         <div class="d-flex align-items-center justify-content-between">
             <div
                 wire:click="switchStatus" 
-                class="bg-light border border-secondary p-3 rounded-circle d-flex align-items-center justify-content-center"
+                class="bg-light border border-secondary p-3 rounded-circle d-flex align-items-center justify-content-center status-btn"
                 style="width: 60px; height: 60px; cursor: pointer;">
-                <i class="fas fa-info text-primary" style="font-size: 24px;"></i>
+                <!-- <i class="fas fa-info text-primary" style="font-size: 24px;"></i> -->
+                <i class="fas fa-ticket text-primary" style="font-size: 24px;"></i>
             </div>
             <div>
                 <h2 class="fw-bold mb-0">{{ $Approvals->where('status', $currentStatus)->count() }}</h2>
@@ -52,7 +53,7 @@
     </div>
 </div>
 
-<div class="mt-3 row g-3">
+<div class="mt-3 row g-3" wire:ignore>
     <div class="col-md-6">
         <div class="card shadow-sm p-3">
             <h5 class="text-center mb-4">Traffic Permintaan Barang</h5>
@@ -111,7 +112,7 @@
 </script>
 @endpush
 
-<div class="mt-3 d-flex gap-3">
+<div class="mt-3 d-flex gap-3" wire:ignore>
     <div class="card col-md-6">
         <div class="card-header">
             <h5>Stock Barang Menipis</h5>

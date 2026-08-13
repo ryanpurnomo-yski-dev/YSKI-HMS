@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barang', function (Blueprint $table) {
-            // Kolom 'id' sebagai Primary Key (Auto Increment)
-            $table->id(); 
-            $table->string('kode_barang', 50)->unique(); 
-            $table->string('kategori_barang');
-            $table->string('nama_barang');
-            $table->string('merk_barang');
+        Schema::create('barang_transactions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('kode_barang', 50);
             $table->integer('kuantitas_barang')->default(0);
+            $table->enum('jenis_transaksi', ['in', 'out']);
             $table->timestamps();
         });
     }
-    
+
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('barang');
+        Schema::dropIfExists('barang_transactions');
     }
 };

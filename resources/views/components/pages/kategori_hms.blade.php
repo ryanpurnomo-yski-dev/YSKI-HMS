@@ -1,7 +1,7 @@
 <?php
 
 use Livewire\Component;
-use App\Models\Kategori;
+use App\Models\KategoriMasalah;
 
 new class extends Component
 {
@@ -11,7 +11,7 @@ new class extends Component
     public function render()
     {
         return view('components.pages.Kategori_hms', [
-            'categories' => Kategori::all() 
+            'categories' => KategoriMasalah::all() 
         ]);
     }
 
@@ -27,9 +27,9 @@ new class extends Component
     public function edit($id)
     {
         $this->isEditMode = true;
-        $data = Kategori::findOrFail($id);
+        $data = KategoriMasalah::findOrFail($id);
         $this->KategoriId = $data->id;
-        $this->Kategori = $data->Kategori;
+        $this->Kategori = $data->kategori;
         $this->icon = $data->icon;
         
         $this->dispatch('openModal'); 
@@ -44,12 +44,12 @@ new class extends Component
         ]);
 
         if ($this->isEditMode) {
-            Kategori::find($this->KategoriId)->update([
+            KategoriMasalah::find($this->KategoriId)->update([
                 'Kategori' => $this->Kategori,
                 'icon' => $this->icon,
             ]);
         } else {
-            Kategori::create([
+            KategoriMasalah::create([
                 'Kategori' => $this->Kategori,
                 'icon' => $this->icon,
             ]);
@@ -67,10 +67,10 @@ new class extends Component
 
     public function delete($id = null, $layer = 0){
         if($layer == 1){
-            Kategori::findOrFail($this->KategoriId)->delete();
+            KategoriMasalah::findOrFail($this->KategoriId)->delete();
             $this->dispatch('closeModal');
         }else{
-            $data = Kategori::findOrFail($id);
+            $data = KategoriMasalah::findOrFail($id);
             $this->KategoriId = $data->id;
             
         }
@@ -107,12 +107,12 @@ new class extends Component
 
 <div class="container-fluid px-0">
     <div class="mb-3">
-        <h2 class="mb-1">Kategori</h2>
+        <h2 class="mb-1">Kategori Masalah</h2>
     </div>
 
     <div class="card table-card border-1 shadow-sm">
         <div class="card-header bg-light border-bottom">
-            <h6 class="h6 mb-1 fw-semibold">Master Data Kategori</h6>
+            <h6 class="h6 mb-1 fw-semibold">Master Data Kategori Masalah</h6>
         </div> 
     
     <div class="card-body p-3">
@@ -185,15 +185,15 @@ new class extends Component
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="categories" class="form-label">Nama Kategori : </label>
-                        <input name="category" class="form-control" id="categories" placeholder="Example" wire:model="Kategori">
+                        <input name="category" class="form-control" id="categories" placeholder="-- Masukkan Kategori Barang --" wire:model="Kategori">
                     </div>
                     <div class="mb-3">
                         <label for="categories" class="form-label">Nama Sub Kategori : </label>
-                        <input name="category" class="form-control" id="categories" placeholder="Example1,Example2" wire:model="Kategori">
+                        <input name="category" class="form-control" id="categories" placeholder="-- Sub Kategori 1, Sub Kategori 2 --" wire:model="Kategori">
                     </div>
                     <div class="mb-3">
                         <label for="Ikon" class="form-label">Icon : </label>
-                        <input name="icons" class="form-control" id="Ikon" placeholder="fa fa-object" wire:model="icon">
+                        <input name="icons" class="form-control" id="Ikon" placeholder="-- Masukkan Icon (fa fa-object) --" wire:model="icon">
                     </div>
                 </div>
                 <div class="modal-footer">
